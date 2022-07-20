@@ -1,0 +1,9 @@
+input:hover{
+    border: 2px solid aqua;
+    border-radius: 3px;
+}
+input:focus{
+    outline:none;
+    border: 2px solid aqua;
+    box-sizing:border-box;
+}
