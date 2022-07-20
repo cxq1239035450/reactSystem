@@ -1,17 +1,12 @@
 
 import './App.css';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link,
   useNavigate
 } from 'react-router-dom';
-
-import { Breadcrumb, Layout, Menu } from 'antd';
-import Card from 'antd/lib/card/Card';
 // 定义了三个函数组件
 const Home = () => {
   return (
@@ -71,8 +66,6 @@ const items1 = ['1', '2', '3'].map((key) => ({
   key,
   label: `nav${key}`,
 }));
-const click = (item)=>{
-}
 
 const Header = ()=>{
   const Navigate = useNavigate()
