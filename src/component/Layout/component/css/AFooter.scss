@@ -1,0 +1,10 @@
+.footerBox{
+    position: absolute;
+    bottom: 0px;
+    width: calc(100vw - 100px);
+    padding: 0 50px 20px;
+    text-align: center;
+    div{
+        padding: 5px;
+    }
+}

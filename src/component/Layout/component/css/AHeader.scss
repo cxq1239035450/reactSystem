@@ -1,9 +1,22 @@
-input:hover{
-    border: 2px solid aqua;
-    border-radius: 3px;
-}
-input:focus{
-    outline:none;
-    border: 2px solid aqua;
-    box-sizing:border-box;
+.headerBox{
+    box-sizing: border-box;
+    width: 100vw;
+    height: 60px;
+    padding: 0 20px;
+    border-bottom: 1px solid #ebebeb;
+    background-color: #fcfbfd;
+    display: flex;
+    justify-content: space-between;
+    .menuBtn{
+        box-sizing: border-box;
+        padding: 20px;
+        height: 60px;
+        &:hover{
+            color: #91d5ff;
+            border-bottom: 2px solid #91d5ff;
+        }
+    }
+    .flex{
+        display: flex;
+    }
 }

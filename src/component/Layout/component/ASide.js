@@ -1,15 +1,9 @@
-import {
-    BrowserRouter as Router,
-    Route,
-    Routes,
-    useNavigate
-  } from 'react-router-dom';
+import './css/ASide.scss'
 
-  const routers = []
 const ASide = (props) => { 
     return (
         <>
-        <div></div>
+        <div className='sideBox'>aaa</div>
         </>
     )
 }

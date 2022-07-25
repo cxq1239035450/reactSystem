@@ -1,4 +1,4 @@
-import ASide from './component/ASide'
+// import ASide from './component/ASide'
 import AHeader from './component/AHeader'
 import AMain from './component/AMain'
 import AFooter from './component/AFooter'
@@ -7,12 +7,12 @@ const Layout = () => {
     return (
         <>
         <div className='Layout'>
-
-          <ASide></ASide>
           <AHeader></AHeader>
-          
-          <AMain></AMain>
-          <AFooter></AFooter>
+          <div className='contentBox'>
+            {/* <ASide></ASide> */}
+            <AMain></AMain>
+            <AFooter></AFooter>
+          </div>
         </div>
         </>
     )

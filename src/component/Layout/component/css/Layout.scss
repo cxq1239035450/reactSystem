@@ -1,4 +1,11 @@
 .Layout{
+    box-sizing: border-box;
+    position: relative;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
+    .contentBox{
+        width: 100%;
+        height: calc(100% - 60px);
+        background-color: #f2f5fb;
+    }
 }

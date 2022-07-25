@@ -1,8 +1,15 @@
-.Card {
+.cards {
+    background: #fcfbfd;
+    min-width: 200px;
+    min-height: 200px;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
     .cardHeader{
-        text-align: center;
+        border-bottom: 1px solid #ebebeb;
+        padding: 10px;
     }
     .cardContent{
-        text-align: center;
+        padding: 10px;
     }
 }
