@@ -1,0 +1,11 @@
+.btnBox{
+    padding: 5px 20px;
+    border: 0px;
+    background-color: skyblue;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    &:hover{
+        background-color: #60ceeb;
+    }
+}
