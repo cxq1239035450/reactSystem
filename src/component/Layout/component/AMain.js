@@ -1,7 +1,8 @@
 import Card from '../../Card/index'
 import Btn from '../../Btn/index'
 import './css/AMain.scss'
-import React, { useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
+import notify from '../../Notification';
 // import ReactDOM from 'react-dom'
 const AMain = () => {
     const [name, setName] = useState(0);
@@ -13,8 +14,8 @@ const AMain = () => {
         <Card title="111" className='aa'>
             <div>{name}</div>
         </Card>
-        <Btn click={()=>setName(name+1)}>a</Btn>
-        <A name={'李四'} age={18}></A>
+        <Btn click={()=>{setName(name+1);notify('欢迎','欢迎光临')}}>a</Btn>
+        <A name={'李四'} age={18} ></A>
         </>
     )
 }

@@ -1,4 +1,28 @@
 .notificationBox{
-    position: absolute;
-    right: 0px;
+    width: 330px;
+    padding: 14px 26px 14px 13px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ebeef5;
+    background: white;
+    transition: all 1s;
+    position: fixed;
+    right: -330px;
+    // transform: translateX(-100px);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 12px 0px;
+    .closeBox{
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        width:10px;
+        height:10px;
+        cursor: pointer;
+    }
+    .contentBox{
+        font-size: 14px;
+        line-height: 21px;
+        margin: 6px 0 0;
+        color: #606266;
+        text-align: justify;
+    }
 }
