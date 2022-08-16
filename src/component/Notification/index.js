@@ -36,7 +36,7 @@ const notify = (title = '标题',content='内容')=>{
                     let notifyHeight = index*100 + 80
                     notifyList[index].style.cssText  = `transform: translateX(-360px);top:${notifyHeight}px`
                 }
-            }, 1000);
+            }, 300);
         })
 }
 export default notify

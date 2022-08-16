@@ -1,7 +1,8 @@
-export function Drag(id){
-    let dragDom = document.getElementById(id)
+export function Drag(dom){
+    let dragDom = dom
     let startx,starty
     function moveDiv(e) {
+        console.log(e, document.documentElement.clientHeight);
         let x = e.clientX - startx;
         let y = e.clientY - starty;
         dragDom.style.position = 'absolute'
@@ -9,7 +10,7 @@ export function Drag(id){
         dragDom.style.top = y + "px";
     }
     dragDom.addEventListener('mousedown',(e)=>{
-        console.log(e);
+
          startx = e.offsetX;
          starty = e.offsetY;
          document.addEventListener("mousemove", moveDiv);

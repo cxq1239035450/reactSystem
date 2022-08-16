@@ -1,0 +1,20 @@
+.box_shadow{
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+.page_center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 2022;
+}
+.mask_layer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    z-index: 2020;
+    background-color: rgba(1,1,1,0.2);
+}

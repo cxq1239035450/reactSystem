@@ -1,43 +1,87 @@
 import Card from '../../Card/index'
 import Btn from '../../Btn/index'
 import './css/AMain.scss'
-import React, {  useEffect, useState } from 'react';
+import React, {  useEffect, useState,useRef, createRef, Fragment } from 'react';
 import notify from '../../Notification';
+import {Drag} from '../../../publicMethods/setDom'
 // import ReactDOM from 'react-dom'
 const AMain = () => {
-    const [name, setName] = useState(0);
+    const [name, setName] = useState('内容');
+    const ref = useRef(null)
     useEffect((prevProps,prevStates)=>{
-        console.log(prevProps,prevStates,'执行Effect');
-    })
+        Drag(ref.current)
+        console.log(ref,'执行Effect');
+    },[ref])
     return (
         <>
-        <Card title="111" className='aa'>
+        <Card title="function" className='aa' ref={ref} style={{height:'200px',width:'200px'}}>
             <div>{name}</div>
         </Card>
         <Btn click={()=>{setName(name+1);notify('欢迎','欢迎光临')}}>a</Btn>
-        <A name={'李四'} age={18} ></A>
+        <A style={{height:'200px',width:'300px'}}>
+            <div>{name}</div>
+        </A>
         </>
     )
 }
 class A extends React.Component {
     constructor(props){
         super(props);
-        this.state = { counter: 0,timer:null }; //初始化state
-        this.ssslog = this.ssslog.bind(this); 
+        this.state = { counter: 0,timer:null,show:false }; //初始化state
+        this.ref = createRef(null)
     }
-    // componentDidMount(){
-    //     console.log('挂载后');
-    // }
-    // componentWillUnmount(){
-    //     console.log('卸载前');
-    // }
-    ssslog(){
+
+    componentDidUpdate(){
+        console.log('更新',this.ref);
+
+    }
+    componentWillReceiveProps(){
+        console.log('props');
+    }
+    componentWillUnmount(){
+        console.log("即将卸载");
+    }
+    componentDidMount(){
+        console.log('挂载后',this.ref);
+    }
+    sumbit(e){
+        e.preventDefault();
+        console.log(this);
+    }
+    change(e){
+        this.setState({
+            counter:e.target.value
+        })
+    }
+    showDialog(e){
+        let show = !this.state.show
+        this.setState({
+            show
+        })
     }
     render() {
         return (
             <>
-            <button onClick={this.ssslog}>ssss</button>
-            {this.state.counter}
+                <Card title="class" className='aa' style={this.props.style}>
+                    {this.props.children}
+                </Card>
+                <form>
+                    <input type={'input'} value={this.state.counter} onChange={(e)=>this.change(e)}></input>
+                    <input type={'submit'} onClick={(e)=>this.sumbit(e)}></input>
+                </form>
+                <button onClick={(e)=>this.showDialog(e)}>显示</button>
+                {this.state.show ?
+                (<div className='dialog'>
+                    <div className='mask_layer' onClick={(e)=>this.showDialog(e)}></div>
+                    <Card title="function" className='page_center' style={{height:'30vh',width:'50vw'}}  ref={this.ref}>
+                        <div>测试</div>
+                        <div onClick={(e)=>this.showDialog(e)}>x</div>
+                    </Card>
+                </div>
+                ) 
+                :
+                ''
+                }
             </>
         )
     }
