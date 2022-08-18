@@ -1,0 +1,27 @@
+@keyframes loading {
+    form{
+        transform: rotate(0deg);
+    }
+    to{
+       transform: rotate(360deg);
+    }
+}
+
+.loading{
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    width: 12px;
+    height: 12px;
+    animation: loading  1s  infinite  linear;
+    border:1px solid skyblue;
+    border-radius: 50%;
+    border-right: 1px transparent;
+    // div{
+    //     width: 5px;
+    //     height: 5px;
+    //     border-radius: 50%;
+    //     position:absolute;
+    //     color: skyblue;
+    // }
+}

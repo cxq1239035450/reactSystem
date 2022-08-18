@@ -2,10 +2,9 @@ export function Drag(dom){
     let dragDom = dom
     let startx,starty
     function moveDiv(e) {
-        console.log(e, document.documentElement.clientHeight);
         let x = e.clientX - startx;
         let y = e.clientY - starty;
-        dragDom.style.position = 'absolute'
+        dragDom.style.position = 'fixed'
         dragDom.style.left = x + "px";
         dragDom.style.top = y + "px";
     }

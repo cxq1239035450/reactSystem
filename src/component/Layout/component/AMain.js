@@ -1,5 +1,6 @@
 import Card from '../../Card/index'
 import Btn from '../../Btn/index'
+import Loading from '../../Loading/index'
 import './css/AMain.scss'
 import React, {  useEffect, useState,useRef, createRef, Fragment } from 'react';
 import notify from '../../Notification';
@@ -33,10 +34,6 @@ class A extends React.Component {
 
     componentDidUpdate(){
         console.log('更新',this.ref);
-
-    }
-    componentWillReceiveProps(){
-        console.log('props');
     }
     componentWillUnmount(){
         console.log("即将卸载");
@@ -58,6 +55,7 @@ class A extends React.Component {
         this.setState({
             show
         })
+        console.log(this);
     }
     render() {
         return (
@@ -69,8 +67,13 @@ class A extends React.Component {
                     <input type={'input'} value={this.state.counter} onChange={(e)=>this.change(e)}></input>
                     <input type={'submit'} onClick={(e)=>this.sumbit(e)}></input>
                 </form>
-                <button onClick={(e)=>this.showDialog(e)}>显示</button>
-                {this.state.show ?
+                <button onClick={(e)=>this.showDialog(e)} className={'button'} style={{'margin':'30px'}}>
+                    <div className='contain'>
+                    <Loading></Loading>
+                    </div>
+                </button>
+
+                {this.state.show &&
                 (<div className='dialog'>
                     <div className='mask_layer' onClick={(e)=>this.showDialog(e)}></div>
                     <Card title="function" className='page_center' style={{height:'30vh',width:'50vw'}}  ref={this.ref}>
@@ -78,9 +81,7 @@ class A extends React.Component {
                         <div onClick={(e)=>this.showDialog(e)}>x</div>
                     </Card>
                 </div>
-                ) 
-                :
-                ''
+                )
                 }
             </>
         )
