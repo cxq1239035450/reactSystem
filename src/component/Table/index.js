@@ -1,22 +1,13 @@
 import './index.scss'
-
-class Table extends ReactDOM {
-    constructor(){}
-    rules = ()=>{
-
-    } 
-    tableRowClassName({row, rowIndex}) {
-        if (rowIndex%2 ==0) {
-          return 'warning-row';
-        } else {
-          return 'success-row';
-        }
+import React from 'react';
+import Btn from '../Btn/index'
+class Table extends React.Component {
+    constructor(props){
+        super(props)
     }
-    a = {aa:'aaa',bb:'bbb',cc:'ccc'}
-    tableData = [
-        {aa:'aaa',bb:'bbb',cc:'ccc'},
-        {aa:'aaa',bb:'bbb',cc:'ccc'}
-    ]
+    setColor(){
+        
+    }
     render(h) {
         return (
         <>
@@ -24,10 +15,10 @@ class Table extends ReactDOM {
               <thead>
                 <tr>
                     <th colSpan="1" rowSpan="1">
-                        <div>{tableData}</div>
+                        <div></div>
                     </th>
                     <th colSpan="1" rowSpan="1">
-                        <div>{this.rules()}</div>
+                        <div></div>
                     </th>
                     <th colSpan="1" rowSpan="1">
                         <div>操作</div>
@@ -45,7 +36,7 @@ class Table extends ReactDOM {
                     <td>
                         <div className='cell'>
                             <Btn>新增</Btn>
-                            <Btn>修改</Btn>
+                            <Btn style={{'marginLeft':'10px'}}>修改</Btn>
                         </div>
                     </td>
                 </tr>
@@ -58,8 +49,8 @@ class Table extends ReactDOM {
                     </td>
                     <td>
                         <div className='cell'>
-                            <Btn>新增</Btn>
-                            <Btn>修改</Btn>
+                            <Btn click={()=>console.log('新增')}>新增</Btn>
+                            <Btn style={{'marginLeft':'10px'}}  click={()=>console.log('修改')}>修改</Btn>
                         </div>
                     </td>
                 </tr>

@@ -1,30 +1,20 @@
 import './index.scss'
-// const notification =  ()=>{
 
-//     return (
-//         <div className="notificationBox">
-//             aa
-//         </div>
-//     )
-// }
-const notify = (title = '标题',content='内容')=>{
-        let notifyList = document.getElementsByClassName('notificationBox')
-        let notifyHeight = notifyList.length*100 + 80
+const message = (color = 'skyblue',content='内容')=>{
+        let messageList = document.getElementsByClassName('message')
+        let notifyHeight = messageList.length * 100 + 80
         let page = document.createElement('div')
-        page.className = 'notificationBox'
-        let titleDiv = document.createElement('h3')
-        titleDiv.innerText = title
+        page.className = 'messageBox'
         let contentDiv = document.createElement('div')
         contentDiv.innerText = content
         contentDiv.className = 'contentBox'
         let closeDiv = document.createElement('div')
         closeDiv.innerText = 'x'
         closeDiv.className = 'closeBox'
-        page.appendChild(titleDiv)
         page.appendChild(contentDiv)
         page.appendChild(closeDiv)
         setTimeout(()=>{
-            page.style.cssText = `transform: translateX(-360px);top:${notifyHeight}px`
+            page.style.cssText = `transform: translateY(200px);top:${notifyHeight}px`
         },100)
         document.body.appendChild(page)
         closeDiv.addEventListener('click',(e)=>{
@@ -39,4 +29,4 @@ const notify = (title = '标题',content='内容')=>{
             }, 300);
         })
 }
-export default notify
+export default message

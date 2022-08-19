@@ -1,9 +1,10 @@
 import './index.scss'
-const Btn = (props) =>{
-    const {children,click,disabled,className} = props
+function Btn(props) {
+    const { children, click, disabled, className, style } = props
+
     return (
         <>
-            <button className={`btnBox ${className}`}onClick={click} disabled={disabled} style={disabled?{backgroundColor:'gray'}:{}}>
+            <button className={`btnBox ${className}`} onClick={click} disabled={disabled} style={disabled ? { ...style, backgroundColor: 'gray' } : { ...style }}>
                 {children}
             </button>
         </>

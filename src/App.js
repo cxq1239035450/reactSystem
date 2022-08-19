@@ -2,10 +2,13 @@
 import './App.css';
 import Layout from './component/Layout/index'
 import Notification from './component/Notification/index'
+import Message from './component/Message/index';
 import React, { useState } from 'react';
+
 
 const App = () => {
   const notify = Notification
+  const message = Message
   return (
     <>
     <Layout></Layout>

@@ -1,10 +1,13 @@
 import Card from '../../Card/index'
 import Btn from '../../Btn/index'
 import Loading from '../../Loading/index'
+import Table from '../../Table/index'
 import './css/AMain.scss'
 import React, {  useEffect, useState,useRef, createRef, Fragment } from 'react';
 import notify from '../../Notification';
+import message from '../../Message';
 import {Drag} from '../../../publicMethods/setDom'
+
 // import ReactDOM from 'react-dom'
 const AMain = () => {
     const [name, setName] = useState('内容');
@@ -57,6 +60,39 @@ class A extends React.Component {
         })
         console.log(this);
     }
+    clearDialog(){
+        return (
+            <div className='dialog'>
+                <div className='mask_layer' onClick={(e)=>this.showDialog(e)}></div>
+                <Card title="function" className='page_center' style={{height:'30vh',width:'50vw'}}  ref={this.ref}>
+                    <div>测试</div>
+                    <div onClick={(e)=>this.showDialog(e)}>x</div>
+                </Card>
+            </div>
+        )
+    }
+    ajax(){
+        return new Promise((resolve, reject) => {
+            setTimeout(()=>{
+                return resolve({data:{},message:'成功',code:1})
+            },1000)
+            // return reject({code:0})
+        })
+    }
+    ssr=async()=>{
+        notify('标题','测试')
+        // let res =  await this.ajax()
+        // if(res.code ===1){
+        //     notify('标题',res.message)
+        // }
+    }
+    sh=()=>{
+        message('skyblue','测试')
+        // let res =  await this.ajax()
+        // if(res.code ===1){
+        //     notify('标题',res.message)
+        // }
+    }
     render() {
         return (
             <>
@@ -72,17 +108,13 @@ class A extends React.Component {
                     <Loading></Loading>
                     </div>
                 </button>
-
-                {this.state.show &&
-                (<div className='dialog'>
-                    <div className='mask_layer' onClick={(e)=>this.showDialog(e)}></div>
-                    <Card title="function" className='page_center' style={{height:'30vh',width:'50vw'}}  ref={this.ref}>
-                        <div>测试</div>
-                        <div onClick={(e)=>this.showDialog(e)}>x</div>
-                    </Card>
+                <Table></Table>
+                <div onClick={this.ssr}>
+                    <span>A</span>
                 </div>
-                )
-                }
+                <Btn click={()=>this.sh()}>message</Btn>
+                {this.state.show && this.clearDialog()}
+                
             </>
         )
     }
