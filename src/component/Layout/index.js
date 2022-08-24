@@ -3,6 +3,7 @@ import AHeader from './component/AHeader'
 import AMain from './component/AMain'
 import AFooter from './component/AFooter'
 import './component/css/Layout.scss'
+import React from 'react'
 const Layout = () => { 
     return (
         <>

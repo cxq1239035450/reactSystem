@@ -3,7 +3,7 @@ import Btn from '../../Btn/index'
 import Loading from '../../Loading/index'
 import Table from '../../Table/index'
 import './css/AMain.scss'
-import React, {  useEffect, useState,useRef, createRef, Fragment } from 'react';
+import React, {  useEffect, useState,useRef, createRef } from 'react';
 import notify from '../../Notification';
 import message from '../../Message';
 import {Drag} from '../../../publicMethods/setDom'
@@ -18,13 +18,13 @@ const AMain = () => {
     },[ref])
     return (
         <>
-        <Card title="function" className='aa' ref={ref} style={{height:'200px',width:'200px'}}>
-            <div>{name}</div>
-        </Card>
-        <Btn click={()=>{setName(name+1);notify('欢迎','欢迎光临')}}>a</Btn>
-        <A style={{height:'200px',width:'300px'}}>
-            <div>{name}</div>
-        </A>
+            <Card title="function" className='aa' ref={ref} style={{height:'200px',width:'200px'}}>
+                <div>{name}</div>
+            </Card>
+            <Btn click={()=>{setName(name+1);notify('欢迎','欢迎光临')}}>a</Btn>
+            <A style={{height:'200px',width:'300px'}}>
+                <div>{name}</div>
+            </A>
         </>
     )
 }
@@ -64,7 +64,7 @@ class A extends React.Component {
         return (
             <div className='dialog'>
                 <div className='mask_layer' onClick={(e)=>this.showDialog(e)}></div>
-                <Card title="function" className='page_center' style={{height:'30vh',width:'50vw'}}  ref={this.ref}>
+                <Card title="function" className='page_center transition' style={{height:'30vh',width:'50vw'}}  ref={this.ref} >
                     <div>测试</div>
                     <div onClick={(e)=>this.showDialog(e)}>x</div>
                 </Card>
@@ -73,18 +73,23 @@ class A extends React.Component {
     }
     ajax(){
         return new Promise((resolve, reject) => {
+            let code = Math.random()*10
             setTimeout(()=>{
+                if (code<=3) {
+                    return resolve({data:{},message:'失败',code:0})
+                }
                 return resolve({data:{},message:'成功',code:1})
             },1000)
-            // return reject({code:0})
+            
         })
     }
     ssr=async()=>{
-        notify('标题','测试')
-        // let res =  await this.ajax()
-        // if(res.code ===1){
-        //     notify('标题',res.message)
-        // }
+        let res =  await this.ajax()
+        if(res.code ===1){
+            notify('标题',res.message)
+        } else {
+            message('red','失败')
+        }
     }
     sh=()=>{
         message('skyblue','测试')
@@ -113,7 +118,7 @@ class A extends React.Component {
                     <span>A</span>
                 </div>
                 <Btn click={()=>this.sh()}>message</Btn>
-                {this.state.show && this.clearDialog()}
+                {this.state.show &&  this.clearDialog()}
                 
             </>
         )
