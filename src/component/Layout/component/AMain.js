@@ -22,13 +22,13 @@ const AMain = () => {
                 <div>{name}</div>
             </Card>
             <Btn click={()=>{setName(name+1);notify('欢迎','欢迎光临')}}>a</Btn>
-            <A style={{height:'200px',width:'300px'}}>
+            <Ces style={{height:'200px',width:'300px'}}>
                 <div>{name}</div>
-            </A>
+            </Ces>
         </>
     )
 }
-class A extends React.Component {
+class Ces extends React.Component {
     constructor(props){
         super(props);
         this.state = { counter: 0,timer:null,show:false }; //初始化state
@@ -64,7 +64,7 @@ class A extends React.Component {
         return (
             <div className='dialog'>
                 <div className='mask_layer' onClick={(e)=>this.showDialog(e)}></div>
-                <Card title="function" className='page_center transition' style={{height:'30vh',width:'50vw'}}  ref={this.ref} >
+                <Card title="function" className='page_center' style={{height:'30vh',width:'50vw'}}  ref={this.ref} >
                     <div>测试</div>
                     <div onClick={(e)=>this.showDialog(e)}>x</div>
                 </Card>
@@ -77,18 +77,22 @@ class A extends React.Component {
             setTimeout(()=>{
                 if (code<=3) {
                     return resolve({data:{},message:'失败',code:0})
+                } else if(code <8){
+                    return resolve({data:{},message:'成功',code:1})
                 }
-                return resolve({data:{},message:'成功',code:1})
+                return reject({data:{},message:'请求出错',code:-1})
             },1000)
             
         })
     }
     ssr=async()=>{
-        let res =  await this.ajax()
+        let res =  await this.ajax().catch(e=>{
+            message('red',e.message)
+        })
         if(res.code ===1){
             notify('标题',res.message)
         } else {
-            message('red','失败')
+            message('red',res.message)
         }
     }
     sh=()=>{

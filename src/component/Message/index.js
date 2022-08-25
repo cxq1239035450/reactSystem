@@ -1,12 +1,12 @@
 import './index.scss'
-const removeDom =(dom,time,list)=>{
+const removeDom =(dom,time,list,color)=>{
     setTimeout(() => {
         dom.style.cssText = `transform: translate(-50%);top:0px;opacity: 0;`
         setTimeout(()=>{
             document.body.removeChild(dom)
             for (let index = 0; index < list.length; index++) {
                 let notifyHeight = index*80 + 40
-                list[index].style.cssText  = `transform: translateX(-50%);top:${notifyHeight}px;`
+                list[index].style.cssText  = `transform: translateX(-50%);top:${notifyHeight}px;background-color:${color}`
             }
         },1000)
     }, time);
@@ -29,14 +29,14 @@ const message = (color = 'skyblue',content='内容',closeIcon)=>{
             page.appendChild(closeDiv)
             closeDiv.addEventListener('click',(e)=>{
                 page.style.cssText = `transform: translate(-50%);top:${notifyHeight}px;opacity: 0;`
-                removeDom(page,300,messageList)
+                removeDom(page,300,messageList,color)
             })
         }
         setTimeout(()=>{
             page.style.cssText = `transform: translateX(-50%);top:${notifyHeight}px;background-color:${color}`
         },100)
         document.body.appendChild(page)
-        removeDom(page,3000,messageList)
+        removeDom(page,3000,messageList,color)
 }
 export default message
 
